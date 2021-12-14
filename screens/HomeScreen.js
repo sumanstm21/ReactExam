@@ -10,7 +10,9 @@ const HomeScreen = props => {
 }
 
 const styles = StyleSheet.create({
- 
+    mainView:{
+        marginTop:40,
+    }
 });
 
 export default HomeScreen;

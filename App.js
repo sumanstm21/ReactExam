@@ -5,9 +5,9 @@ import Navigation from './components/Navigation';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    // <View style={styles.container}>
       <Navigation></Navigation>
-    </View>
+    // </View>
   );
 }
 
