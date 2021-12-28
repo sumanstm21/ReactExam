@@ -15,7 +15,7 @@ const LoginScreen = ({navigation}) => {
                 <Image source={require('../assets/images/MaskGroup1.svg')} />
             </View> */}
             {/* <Text>Something</Text> */}
-            <View>
+            {/* <View> */}
                 <Text style={styles.TitleText}>Log In</Text>
                 <TextInput placeholder='Email' style={styles.TextInput}/>
                 <TextInput secureTextEntry={true} placeholder='Password'  style={styles.TextInput} />
@@ -29,13 +29,14 @@ const LoginScreen = ({navigation}) => {
                     <View style={styles.BottomView}>Bottom View</View> */}
                     
                     <Text onPress={navigate}  style={styles.LinkText}>Don't have an account? Sign Up!</Text>
-            </View>
+            {/* </View> */}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     mainView:{
+        width: '90%',
         marginTop:40,
         flex:1,
         flexDirection:'column',
