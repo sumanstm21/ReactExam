@@ -28,6 +28,23 @@ const defaultStyles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center'
+    },
+    pageTitle: {
+        fontFamily: 'Teko',
+        color: '#32305D',
+        fontWeight: 'bold',
+        fontSize: 30
+    },
+    formText: {
+        color: '#32305D',
+        fontWeight: 'bold',
+        flexDirection: 'column',
+        alignItems: 'flex-start'
+    },
+    button: {
+        flex:1,
+        color: '#5050A5',
+        fontSize: 40
     }
 });
 

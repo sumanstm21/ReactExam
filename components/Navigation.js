@@ -18,19 +18,19 @@ const Navigation = props => {
 
     return (
         <NavigationContainer style={styles.container}>
-            {/* {loggedInUser == false ? (
+            {loggedInUser == false ? (
                 <Tab.Navigator screenOptions={{ headerShown: false }}>
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Discover" component={HomeScreen} />
                     <Tab.Screen name="ChatOuter" component={ChatScreen} />
                     <Tab.Screen name="Menu" component={LoginScreen} />
                 </Tab.Navigator>
-            ) : ( */}
+            ) : (
                 <Stack.Navigator>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Signup" component={SignupScreen} />
                 </Stack.Navigator>
-            {/* )} */}
+            )}
         </NavigationContainer>
  );
 }
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
         marginTop: 40,
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        // alignItems: 'center',
+        // justifyContent: 'center',
       }, 
 });
 

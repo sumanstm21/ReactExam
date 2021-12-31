@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, } from 'react-native';
 import LoginScreen from './LoginScreen';
-
+import defaultStyles from '../GeneralStyles';
+import Logo from '../components/Logo';
 
 const SignupScreen = ({navigation}) => {
 
@@ -11,11 +12,9 @@ const SignupScreen = ({navigation}) => {
 
     return (
         <View style={styles.mainView}>
-            <Text>Sign Up Here Singupscreen</Text>
-            <Button 
-                title="Go to Sign In"
-                onPress={navigate}
-            />
+            <Logo />
+            <Text style={defaultStyles.pageTitle}>Sign Up to get access</Text>
+            <Text onPress={navigate}>Sign In</Text>
         </View>
     );
 }
