@@ -45,7 +45,18 @@ const defaultStyles = StyleSheet.create({
         flex:1,
         color: '#5050A5',
         fontSize: 40
-    }
+    },
+    TitleText: {
+        fontWeight: 'bold',
+        fontSize: 19,
+        color: '#32305D'
+    },
+    LinkText: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#32305D',
+        margin: 10
+    },
 });
 
 export default defaultStyles;
