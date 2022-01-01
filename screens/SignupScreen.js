@@ -10,13 +10,11 @@ const SignupScreen = ({navigation}) => {
     function navigate(){
         navigation.navigate('Login');
     }
-
+    function onSignUp(){
+        console.log('onsignup pressed');
+        return null;
+    }
     return (
-        // <View style={styles.mainView}>
-        //     <Logo />
-        //     <Text style={defaultStyles.pageTitle}>Sign Up to get access</Text>
-        //     <Text onPress={navigate}>Sign In</Text>
-        // </View>
         <View style={styles.mainView}>
             <Logo />
             <Text style={defaultStyles.TitleText}>Sign up to get access</Text>
@@ -34,9 +32,8 @@ const SignupScreen = ({navigation}) => {
                 placeholder='Repeat Password'  
                 style={defaultStyles.textInput}
                 />
-
             <TouchableOpacity style={styles.Button}>
-                <Text style={styles.ButtonText}>Get access</Text>
+                <Text style={styles.ButtonText} onPress={() => this.onSignUp()}>Get access</Text>
             </TouchableOpacity>
             <Text onPress={navigate} style={defaultStyles.LinkText}>Already a user? Log In </Text>
         </View>
