@@ -1,39 +1,55 @@
-import React from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, Button, StyleSheet, } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import LoginScreen from './LoginScreen';
 import defaultStyles from '../GeneralStyles';
 import Logo from '../components/Logo';
+// import { useDispatch } from 'react-redux';
+
+// import firebase from 'firebase';
+import {auth} from '../Firebase/firebase';
+// import { firebase } from '../Firebase/firebase';
 
 const SignupScreen = ({navigation}) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
+    // const dispatch = useDispatch();
+    
     function navigate(){
         navigation.navigate('Login');
     }
-    function onSignUp(){
-        console.log('onsignup pressed');
-        return null;
+
+    const handleSignup = () => {
+        // dispatch(signup(changeName, password));
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then(userCredentials => {
+                const user = userCredentials.user;
+                console.log(user.email);
+            })
+            .catch(error => alert(error.message))
     }
+
     return (
         <View style={styles.mainView}>
             <Logo />
             <Text style={defaultStyles.TitleText}>Sign up to get access</Text>
             <TextInput 
                 placeholder='Email' 
+                value={email}
+                onChangeText={text=> setEmail(text)}
                 style={defaultStyles.textInput}
                 />
             <TextInput 
                 secureTextEntry={true}
-                placeholder='Password'  
+                placeholder='Password'
+                value={password}
+                onChangeText={text=> setPassword(text)}
                 style={defaultStyles.textInput}
                 />
-            <TextInput 
-                secureTextEntry={true} 
-                placeholder='Repeat Password'  
-                style={defaultStyles.textInput}
-                />
-            <TouchableOpacity style={styles.Button}>
-                <Text style={styles.ButtonText} onPress={() => this.onSignUp()}>Get access</Text>
+            <TouchableOpacity style={styles.Button} onPress={handleSignup}>
+                <Text style={styles.ButtonText}>Get access</Text>
             </TouchableOpacity>
             <Text onPress={navigate} style={defaultStyles.LinkText}>Already a user? Log In </Text>
         </View>

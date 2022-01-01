@@ -15,11 +15,11 @@ const Navigation = props => {
     const Tab = createBottomTabNavigator();
     
     // const loggedInUser = useSelector(state => state.user.loggedInUser);
-    const loggedInUser = true;
+    const loggedInUser = false;
 
     return (
         <NavigationContainer style={styles.container}>
-            {loggedInUser == false ? (
+            {loggedInUser == true ? (
                 <Tab.Navigator screenOptions={{ headerShown: false }}>
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Discover" component={HomeScreen} />
@@ -29,7 +29,7 @@ const Navigation = props => {
             ) : (
                 <Stack.Navigator>
                     <Stack.Screen name="Login" component={LoginScreen} />
-                    <Stack.Screen name="Signup" component={SignupScreen} />
+                    <Stack.Screen name="Signup" component={ SignupScreen } />
                 </Stack.Navigator>
             )}
         </NavigationContainer>
