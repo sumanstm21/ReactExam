@@ -4,10 +4,11 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import LoginScreen from './LoginScreen';
 import defaultStyles from '../GeneralStyles';
 import Logo from '../components/Logo';
+// import { auth } from '../Firebase/firebase';
 // import { useDispatch } from 'react-redux';
 
 // import firebase from 'firebase';
-import {firebase} from '../Firebase/firebase';
+// import {firebase} from '../Firebase/firebase';
 // import { firebase } from '../Firebase/firebase';
 
 const SignupScreen = ({navigation}) => {
