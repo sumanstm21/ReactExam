@@ -4,7 +4,7 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import LoginScreen from './LoginScreen';
 import defaultStyles from '../GeneralStyles';
 import Logo from '../components/Logo';
-// import { auth } from '../Firebase/firebase';
+import { auth } from '../Firebase/firebase';
 // import { useDispatch } from 'react-redux';
 
 // import firebase from 'firebase';
@@ -24,7 +24,7 @@ const SignupScreen = ({navigation}) => {
     function handleSignup(){
         // dispatch(signup(changeName, password));
         console.log('do something');
-        firebase.auth
+        auth
             .createUserWithEmailAndPassword(email, password)
             .then(userCredentials => {
                 const user = userCredentials.user;
