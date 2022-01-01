@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import LoginScreen from './LoginScreen';
+import { firebase } from '../Firebase/firebase';
 import defaultStyles from '../GeneralStyles';
 import Logo from '../components/Logo';
 
 const SignupScreen = ({navigation}) => {
 
     function navigate(){
+        console.log(firebase);
         navigation.navigate('Login');
     }
     function onSignUp(){
