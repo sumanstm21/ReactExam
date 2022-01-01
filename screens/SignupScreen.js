@@ -7,7 +7,7 @@ import Logo from '../components/Logo';
 // import { useDispatch } from 'react-redux';
 
 // import firebase from 'firebase';
-import {auth} from '../Firebase/firebase';
+import {firebase} from '../Firebase/firebase';
 // import { firebase } from '../Firebase/firebase';
 
 const SignupScreen = ({navigation}) => {
@@ -20,9 +20,10 @@ const SignupScreen = ({navigation}) => {
         navigation.navigate('Login');
     }
 
-    const handleSignup = () => {
+    function handleSignup(){
         // dispatch(signup(changeName, password));
-        auth
+        console.log('do something');
+        firebase.auth
             .createUserWithEmailAndPassword(email, password)
             .then(userCredentials => {
                 const user = userCredentials.user;
@@ -48,7 +49,7 @@ const SignupScreen = ({navigation}) => {
                 onChangeText={text=> setPassword(text)}
                 style={defaultStyles.textInput}
                 />
-            <TouchableOpacity style={styles.Button} onPress={handleSignup}>
+            <TouchableOpacity onPress={handleSignup} style={styles.Button}>
                 <Text style={styles.ButtonText}>Get access</Text>
             </TouchableOpacity>
             <Text onPress={navigate} style={defaultStyles.LinkText}>Already a user? Log In </Text>
