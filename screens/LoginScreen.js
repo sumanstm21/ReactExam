@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Logo from '../components/Logo';
+import { auth } from '../Firebase/firebase';
 import defaultStyles from '../GeneralStyles';
+// import Navigation from './components/Navigation';
+// import { useNavigation } from '@react-nativation/core'; 
 
 const LoginScreen = ({navigation}) => {
-    const [email, onChangeEmail] = useState("");
-    const [password, onChangePassword] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    // const LogNavigation = useNavigation()
 
     function navigate(){
         navigation.navigate('Signup');
+    }
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+                console.log('already Logged In');
+                navigation.replace('Profile');
+            }
+        })
+
+        return unsubscribe
+    }, [])
+
+    function handleLogin(){
+        console.log('Logged in with:');
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then(userCredentials => {
+                const user = userCredentials.user;
+                console.log('Logged in with: ', user.email);
+            })
+            .catch(error => alert(error.message))
     }
 
     return (
@@ -20,22 +46,22 @@ const LoginScreen = ({navigation}) => {
             <TextInput 
                 type={email} 
                 style={defaultStyles.textInput} 
-                onChangeText={onChangeEmail} 
-                value={email} 
+                value={email}
+                onChangeText={text=> setEmail(text)} 
                 placeholder = "Email"
                 placeholderTextColor = "#BABADD" 
             />
             <Text style={defaultStyles.formText}>Password</Text>
             <TextInput 
                 style={defaultStyles.textInput} 
-                onChangeText={onChangePassword} 
                 value={password}
+                onChangeText={text=> setPassword(text)}
                 secureTextEntry={true}
                 placeholder = "Password"
                 placeholderTextColor = "#BABADD"
             />
             <Text style={defaultStyles.formText}>Forgot password?</Text>
-            <TouchableOpacity style={styles.Button}>
+            <TouchableOpacity onPress={handleLogin} style={styles.Button}>
                 <Text style={styles.ButtonText}>Log In</Text>
             </TouchableOpacity>
             <Text

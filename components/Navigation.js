@@ -7,15 +7,24 @@ import HomeScreen from '../screens/HomeScreen';
 import ChatScreen from '../screens/ChatScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import { useSelector } from 'react-redux';
+import { auth } from '../Firebase/firebase';
 
 const Navigation = props => {
     
     const Stack = createNativeStackNavigator();
     const Tab = createBottomTabNavigator();
+    const loggedInUser = false;
     
     // const loggedInUser = useSelector(state => state.user.loggedInUser);
-    const loggedInUser = false;
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            console.log('You are on Navigation page.');
+            const loggedInUser = true;
+        }
+    })
+    // const loggedInUser = false;
 
     return (
         <NavigationContainer style={styles.container}>
@@ -24,12 +33,13 @@ const Navigation = props => {
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Discover" component={HomeScreen} />
                     <Tab.Screen name="ChatOuter" component={ChatScreen} />
-                    <Tab.Screen name="Menu" component={LoginScreen} />
+                    <Tab.Screen name="Profile" component={ProfileScreen} />
                 </Tab.Navigator>
             ) : (
                 <Stack.Navigator>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Signup" component={ SignupScreen } />
+                    <Stack.Screen name="Profile" component={ ProfileScreen } />
                 </Stack.Navigator>
             )}
         </NavigationContainer>
