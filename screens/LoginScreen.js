@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
+import { View, Text, Button, StyleSheet, TextInput, Image} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Logo from '../components/Logo';
 import { auth } from '../Firebase/firebase';
@@ -40,7 +40,9 @@ const LoginScreen = ({navigation}) => {
 
     return (
         <View style={styles.mainView}>
-            <Logo />
+            <Image source = {require('../img/MaskGroup1.svg')}
+                style = {{ width: 100, height: 100 }}
+                />
             <Text style={defaultStyles.pageTitle}>Log In</Text>
             <Text style={defaultStyles.formText}>Email</Text>
             <TextInput 
