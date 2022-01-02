@@ -3,13 +3,16 @@ import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Navigation from '../components/Navigation';
 import { auth } from '../Firebase/firebase';
+import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';
 import ChatScreen from './ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import AddPostScreen from './AddPostScreen';
 
 const AuthHome = ({navigation}) => {
 
+    const Stack = createStackNavigator();
     const Tab = createBottomTabNavigator();
 
     function handleSignOut(){
@@ -57,6 +60,20 @@ const AuthHome = ({navigation}) => {
                   <View>
                       <Image
                       source={require('../img/icons8-chat.svg')} 
+                      resizeMode='contain'
+                      style={{
+                          width:25,
+                          height:25
+                      }}
+                        />
+                  </View>  
+                ),
+            }}/>
+            <Tab.Screen name="Add" component={AddPostScreen}  options={{
+                tabBarIcon: ({focused}) => (
+                  <View>
+                      <Image
+                      source={require('../img/icons8-home.svg')} 
                       resizeMode='contain'
                       style={{
                           width:25,
