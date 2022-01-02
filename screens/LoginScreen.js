@@ -20,7 +20,7 @@ const LoginScreen = ({navigation}) => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
                 console.log('already Logged In');
-                navigation.replace('Profile');
+                navigation.replace('AuthHome');
             }
         })
 

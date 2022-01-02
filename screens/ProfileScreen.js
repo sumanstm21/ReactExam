@@ -3,8 +3,15 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Navigation from '../components/Navigation';
 import { auth } from '../Firebase/firebase';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/HomeScreen';
+import ChatScreen from '../screens/ChatScreen';
+// import ProfileScreen from '../screens/ProfileScreen';
 
 const ProfileScreen = ({navigation}) => {
+
+    const Tab = createBottomTabNavigator();
+
     function handleSignOut(){
         auth
             .signOut()
@@ -17,6 +24,7 @@ const ProfileScreen = ({navigation}) => {
     return (
     <View style={styles.mainView}>
         <Text>Email: {auth.currentUser?.email}</Text>
+        <Text>Email: {auth.currentUser?.uid}</Text>
         <TouchableOpacity onPress={handleSignOut} style={styles.Button}>
                 <Text style={styles.ButtonText}>Sign Out</Text>
         </TouchableOpacity>

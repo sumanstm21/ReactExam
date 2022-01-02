@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,6 +8,7 @@ import ChatScreen from '../screens/ChatScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import AuthHome from '../screens/AuthHome';
 import { useSelector } from 'react-redux';
 import { auth } from '../Firebase/firebase';
 
@@ -39,7 +40,7 @@ const Navigation = props => {
                 <Stack.Navigator>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Signup" component={ SignupScreen } />
-                    <Stack.Screen name="Profile" component={ ProfileScreen } />
+                    <Stack.Screen name="AuthHome" component={ AuthHome } />
                 </Stack.Navigator>
             )}
         </NavigationContainer>
