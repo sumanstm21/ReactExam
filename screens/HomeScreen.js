@@ -73,6 +73,7 @@ const HomeScreen = props => {
             data={Posts}
             renderItem={({item}) => <FeedPost item={item} />}
             keyExtractor={item=>item.id}
+            showsVerticalScrollIndicator={false}
         />
     </Container>
  );

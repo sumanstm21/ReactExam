@@ -3,50 +3,48 @@ import { View, Text, Button,  ScrollView, StyleSheet } from 'react-native';
 import {Card, Container, Interaction, InteractionText, InteractionWrapper, PostImg, PostText, PostTime, UserImg, UserInfo, UserInfoText, UserName} from '../styles/FeedStyles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const FeedPost = () => {
+const FeedPost = ({item}) => {
+    likeIcon = item.liked ? 'heart' : 'heart-outline';
+    likeIconColor = item.liked ? '#2e64e5' : '#333';
+    
+    if (item.likes == 1) {
+        likeText = '1 Like';
+      } else if (item.likes > 1) {
+        likeText = item.likes + ' Likes';
+      } else {
+        likeText = 'Like';
+      }
+    
+      if (item.comments == 1) {
+        commentText = '1 Comment';
+      } else if (item.comments > 1) {
+        commentText = item.comments + ' Comments';
+      } else {
+        commentText = 'Comment';
+      }
+
  return (
         <Card>
             <UserInfo>
                 <UserImg source={item.UserImg} />
                 <UserInfoText>
-                    <UserName>{ClipboardItem.UserName}</UserName>
+                    <UserName>{item.UserName}</UserName>
                     <PostTime>{item.PostTime}</PostTime>
                 </UserInfoText>
             </UserInfo>
             <PostText>{item.post}</PostText>
-            <PostImg source={require('../img/user/user.jpg')}/>
+            <PostImg source={item.PostImg}/>
             <InteractionWrapper>
-                <Interaction>
-                    <Ionicons name="heart-outline" size={25} />
-                    <InteractionText>Like</InteractionText>
+                <Interaction active={item.liked}>
+                    <Ionicons name={likeIcon} size={25} color={likeIconColor} />
+                    <InteractionText active={item.liked}>{likeText}</InteractionText>
                 </Interaction>
                 <Interaction>
                     <Ionicons name="md-chatbubble-outline" size={25} />
-                    <InteractionText>Comment</InteractionText>
+                    <InteractionText>{commentText}</InteractionText>
                 </Interaction>
             </InteractionWrapper>
         </Card>
-            //     <Card>
-            //     <UserInfo>
-            //         <UserImg source={require('../img/user/user.jpg')} />
-            //         <UserInfoText>
-            //             <UserName>Brad</UserName>
-            //             <PostTime>4 hours ago</PostTime>
-            //         </UserInfoText>
-            //     </UserInfo>
-            //     <PostText>This is Test Image.</PostText>
-            //     <PostImg source={require('../img/user/user.jpg')}/>
-            //     <InteractionWrapper>
-            //         <Interaction>
-            //             <Ionicons name="heart-outline" size={25} />
-            //             <InteractionText>Like</InteractionText>
-            //         </Interaction>
-            //         <Interaction>
-            //             <Ionicons name="md-chatbubble-outline" size={25} />
-            //             <InteractionText>Comment</InteractionText>
-            //         </Interaction>
-            //     </InteractionWrapper>
-            // </Card>
  );
 }
 
