@@ -10,6 +10,8 @@ import ChatScreen from './ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import AddPostScreen from './AddPostScreen';
 import DiscoverScreen from '../screens/DiscoverScreen';
+import DiscoverCreateScreen from './DiscoverCreateScreen';
+import DiscoversList from './DiscoversList';
 
 const AuthHome = ({navigation}) => {
 
@@ -42,7 +44,7 @@ const AuthHome = ({navigation}) => {
                   </View>  
                 ),
             }}/>
-            <Tab.Screen name="Discover" component={DiscoverScreen} options={{
+            <Tab.Screen name="Discover" component={DiscoversList} options={{
                 tabBarIcon: ({focused}) => (
                   <View>
                       <Image
@@ -71,6 +73,20 @@ const AuthHome = ({navigation}) => {
                 ),
             }}/>
             <Tab.Screen name="Add" component={AddPostScreen}  options={{
+                tabBarIcon: ({focused}) => (
+                  <View>
+                      <Image
+                      source={require('../img/icons8-home.svg')} 
+                      resizeMode='contain'
+                      style={{
+                          width:25,
+                          height:25
+                      }}
+                        />
+                  </View>  
+                ),
+            }}/>
+            <Tab.Screen name="Add Discover" component={DiscoverCreateScreen}  options={{
                 tabBarIcon: ({focused}) => (
                   <View>
                       <Image

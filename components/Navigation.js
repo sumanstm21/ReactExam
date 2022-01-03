@@ -11,6 +11,9 @@ import ProfileScreen from '../screens/ProfileScreen';
 import AuthHome from '../screens/AuthHome';
 import { useSelector } from 'react-redux';
 import { auth } from '../Firebase/firebase';
+import DiscoversList from '../screens/DiscoversList';
+import DiscoverScreen from '../screens/DiscoverScreen';
+import DiscoverCreateScreen from '../screens/DiscoverCreateScreen';
 
 const Navigation = props => {
     
@@ -32,7 +35,7 @@ const Navigation = props => {
             {loggedInUser == true ? (
                 <Tab.Navigator screenOptions={{ headerShown: false }}>
                     <Tab.Screen name="Home" component={HomeScreen} />
-                    <Tab.Screen name="Discover" component={HomeScreen} />
+                    <Tab.Screen name="Discover" component={DiscoversList} options={{title: 'Discoveries'}} />
                     <Tab.Screen name="ChatOuter" component={ChatScreen} />
                     <Tab.Screen name="Profile" component={ProfileScreen} />
                 </Tab.Navigator>
@@ -41,6 +44,9 @@ const Navigation = props => {
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Signup" component={ SignupScreen } />
                     <Stack.Screen name="AuthHome" component={ AuthHome } />
+                    <Stack.Screen name="DiscoversList" component={ DiscoversList }  options={{title: 'Discovery'}} />
+                    <Stack.Screen name="DiscoverScreen" component={ DiscoverScreen }  options={{title: 'Discover List'}}/>
+                    <Stack.Screen name="DiscoverCreateScreen" component={ DiscoverCreateScreen } />
                 </Stack.Navigator>
             )}
         </NavigationContainer>
