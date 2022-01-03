@@ -12,6 +12,7 @@ import AddPostScreen from './AddPostScreen';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import DiscoverCreateScreen from './DiscoverCreateScreen';
 import DiscoversList from './DiscoversList';
+import EventScreen from './EventScreen';
 
 const AuthHome = ({navigation}) => {
 
@@ -86,7 +87,7 @@ const AuthHome = ({navigation}) => {
                   </View>  
                 ),
             }}/>
-            <Tab.Screen name="Add Discover" component={DiscoverCreateScreen}  options={{
+            <Tab.Screen name="Events" component={EventScreen}  options={{
                 tabBarIcon: ({focused}) => (
                   <View>
                       <Image

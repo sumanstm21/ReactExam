@@ -39,7 +39,7 @@ const DiscoverScreen = (props) => {
           .doc(props.route.params.userId);
         await dbRef.delete();
         setLoading(false)
-        props.navigation.navigate("UsersList");
+        props.navigation.navigate("DiscoversList");
     };
 
     const openConfirmationAlert = () => {
@@ -64,7 +64,7 @@ const DiscoverScreen = (props) => {
           phone: user.phone,
         });
         setUser(initialState);
-        props.navigation.navigate("UsersList");
+        props.navigation.navigate("DiscoversList");
     };
 
     useEffect(() => {
