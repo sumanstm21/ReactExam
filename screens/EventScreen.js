@@ -44,9 +44,9 @@ const EventScreen = (props) => {
             <Avatar
               source={{
                 uri:
-                  "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-              }}
-              rounded
+                  "http://prcagrimex.co.th/en/wp-content/uploads/2014/04/dummy-image-green-e1398449160839.jpg",
+              }} 
+              style={{ width: 100, height: 100 }}
             />
             <ListItem.Content>
               <ListItem.Title>{event.title}</ListItem.Title>
