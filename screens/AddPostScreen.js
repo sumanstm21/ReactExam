@@ -15,6 +15,8 @@ import * as ImagePicker from 'expo-image-picker';
 import storage, { firebase } from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 
+// import * as firebase from 'firebase';
+
 import {
   InputField,
   InputWrapper,
@@ -47,12 +49,12 @@ const AddPostScreen = () => {
 
     if (!result.cancelled) {
       setImage(result.uri);
-      this.uploadImage(result.uri, "test-image")
+      uploadImage(result.uri, "test-image")
       .then(() => {
         Alert.alert('Success');
       })
       .catch(console.error((error) => {
-        Alert.alert(error);
+        Alert.alert('not success');
       }));
     }
   };
@@ -90,7 +92,6 @@ const AddPostScreen = () => {
     setUploading(true);
     try {
       await storage().ref(filename).putFile(uploadUri);
-
       setUploading(false);
       Alert.alert(
           'Image Uploaded'
@@ -98,14 +99,14 @@ const AddPostScreen = () => {
     } catch (e) {
         console.log(e);
         Alert.alert(
-          'Something'
+          'Something went wrong'
       );
       // Alert.alert(e);
     }
     setImage(null);
   }
 
-  uploadImage = async(uri, imageName) => {
+  const uploadImage = async(uri, imageName) => {
     const response = await fetch(uri);
     const blob = await response.blob();
 
