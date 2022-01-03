@@ -14,6 +14,8 @@ import { auth } from '../Firebase/firebase';
 import DiscoversList from '../screens/DiscoversList';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import DiscoverCreateScreen from '../screens/DiscoverCreateScreen';
+import EventScreen from '../screens/EventScreen';
+import EventCreateScreen from '../screens/EventCreateScreen';
 
 const Navigation = props => {
     
@@ -47,6 +49,8 @@ const Navigation = props => {
                     <Stack.Screen name="DiscoversList" component={ DiscoversList }  options={{title: 'Discovery'}} />
                     <Stack.Screen name="DiscoverScreen" component={ DiscoverScreen }  options={{title: 'Discover List'}}/>
                     <Stack.Screen name="DiscoverCreateScreen" component={ DiscoverCreateScreen } />
+                    <Stack.Screen name="EventCreateScreen" component={ EventCreateScreen } />
+                    <Stack.Screen name="EventScreen" component={ EventScreen } />
                 </Stack.Navigator>
             )}
         </NavigationContainer>

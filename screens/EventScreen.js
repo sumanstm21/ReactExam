@@ -49,9 +49,9 @@ const EventScreen = (props) => {
               rounded
             />
             <ListItem.Content>
-              <ListItem.Title>{user.title}</ListItem.Title>
-              <ListItem.Subtitle>{user.date}</ListItem.Subtitle>
-              <ListItem.Subtitle>{user.location}</ListItem.Subtitle>
+              <ListItem.Title>{event.title}</ListItem.Title>
+              <ListItem.Subtitle>{event.date}</ListItem.Subtitle>
+              <ListItem.Subtitle>{event.location}</ListItem.Subtitle>
             </ListItem.Content>
           </ListItem>
         );
