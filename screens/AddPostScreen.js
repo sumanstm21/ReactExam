@@ -33,6 +33,29 @@ const AddPostScreen = () => {
 //   const [transferred, setTransferred] = useState(0);
 //   const [post, setPost] = useState(null);
 
+  const takePhotoFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 1200,
+      height: 780,
+      cropping: true,
+    }).then((image) => {
+      console.log(image);
+      const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;
+      setImage(imageUri);
+    });
+  };
+
+  const choosePhotoFromLibrary = () => {
+    ImagePicker.openPicker({
+      width: 1200,
+      height: 780,
+      cropping: true,
+    }).then((image) => {
+      console.log(image);
+      const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;
+      setImage(imageUri);
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -52,8 +75,8 @@ const AddPostScreen = () => {
         <ActionButton.Item
           buttonColor="#9b59b6"
           title="Take Photo"
-          onPress={()=> console.log('action button')}>
-          {/* onPress={takePhotoFromCamera}> */}
+          // onPress={()=> console.log('action button')}>
+          onPress={takePhotoFromCamera}>
           <Icon name="camera-outline" style={styles.actionButtonIcon} />
         </ActionButton.Item>
         <ActionButton.Item

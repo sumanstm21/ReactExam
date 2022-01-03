@@ -1928,7 +1928,7 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/masked-view/-/masked-view-0.1.11.tgz"
   "version" "0.1.11"
 
-"@react-native-firebase/app@^14.2.1":
+"@react-native-firebase/app@^14.2.1", "@react-native-firebase/app@14.2.1":
   "integrity" "sha512-zfQ7VxeuwSgxFNXE2RFRnIlI+rc+/kNMLl0ChsQTzPJLOOm6GvliTBocph6qENDAwzQBXxJTss9s3rU4rsNjYg=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-14.2.1.tgz"
   "version" "14.2.1"
@@ -1936,6 +1936,16 @@
     "@expo/config-plugins" "^4.0.12"
     "opencollective-postinstall" "^2.0.1"
     "superstruct" "^0.6.2"
+
+"@react-native-firebase/auth@^14.2.1":
+  "integrity" "sha512-ULHPFw+lvjZQsKKFPeeuuyZ+Khhu5hu/W3xnbbtFQ1W7C0oj+BeEC6kvhck14SWm7Hzt8zapcqngqfC7GRyOwg=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-14.2.1.tgz"
+  "version" "14.2.1"
+
+"@react-native-firebase/storage@^14.2.1":
+  "integrity" "sha512-MVgBdOjfhGGcfU5OkqZ1rhFQ/xspoukbFL+zFl5GyDlMeQk59H/IaNHglboQVk1D0nrJ9IF/yLukbUIKy1uZnw=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/storage/-/storage-14.2.1.tgz"
+  "version" "14.2.1"
 
 "@react-native/assets@1.0.0":
   "integrity" "sha512-KrwSpS1tKI70wuKl68DwJZYEvXktDHdZMG0k2AXD/rJVSlB23/X2CB2cutVR0HwNMJIal9HOUOBB2rVfa6UGtQ=="
@@ -6041,6 +6051,16 @@
     "invariant" "^2.2.4"
     "prop-types" "^15.7.2"
 
+"react-native-image-crop-picker-modify@^1.0.1":
+  "integrity" "sha512-QHJGehEMgRQMObaMGdV+b+oInkapPkCFSbJZPEGC6dkRS12z9xCfqnuUioQnwU+EMm96ZaZ6kdc+w9PeZm05Kw=="
+  "resolved" "https://registry.npmjs.org/react-native-image-crop-picker-modify/-/react-native-image-crop-picker-modify-1.0.1.tgz"
+  "version" "1.0.1"
+
+"react-native-image-crop-picker@^0.37.2":
+  "integrity" "sha512-YwZXW21Km8+3tSt0smTaLVgY4398c0/OJcpcH6EP0JDOt1BNNxl/R8m6qdvnwdXdIoa0CCnMVW6TL9IN5ia9OA=="
+  "resolved" "https://registry.npmjs.org/react-native-image-crop-picker/-/react-native-image-crop-picker-0.37.2.tgz"
+  "version" "0.37.2"
+
 "react-native-reanimated@~2.2.0":
   "integrity" "sha512-Nn648MfEEnTCEiWsl1YmfkojiLyV0NMY0EiRdDRbZNfJVfxBuyqhCxI/4Jd7aBi162qpgf8XK2mByYgvF4zLrQ=="
   "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.2.4.tgz"
@@ -6076,7 +6096,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-"react-native@*", "react-native@>=0.11", "react-native@>=0.57", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
+"react-native@*", "react-native@>=0.11", "react-native@>=0.40.0", "react-native@>=0.57", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
   "integrity" "sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.64.3.tgz"
   "version" "0.64.3"
