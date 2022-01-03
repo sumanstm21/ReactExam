@@ -9,6 +9,7 @@ import HomeScreen from './HomeScreen';
 import ChatScreen from './ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import AddPostScreen from './AddPostScreen';
+import DiscoverScreen from '../screens/DiscoverScreen';
 
 const AuthHome = ({navigation}) => {
 
@@ -41,7 +42,7 @@ const AuthHome = ({navigation}) => {
                   </View>  
                 ),
             }}/>
-            <Tab.Screen name="Discover" component={HomeScreen} options={{
+            <Tab.Screen name="Discover" component={DiscoverScreen} options={{
                 tabBarIcon: ({focused}) => (
                   <View>
                       <Image
