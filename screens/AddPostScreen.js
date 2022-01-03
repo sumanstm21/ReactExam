@@ -12,8 +12,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
 // import ImagePicker from 'react-native-image-crop-picker';
 
-// import storage from '@react-native-firebase/storage';
-// import firestore from '@react-native-firebase/firestore';
+import storage, { firebase } from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
 
 import {
   InputField,
@@ -30,9 +30,9 @@ const AddPostScreen = () => {
 //   const {user, logout} = useContext(AuthContext);
 
   const [image, setImage] = useState(null);
-//   const [uploading, setUploading] = useState(false);
-//   const [transferred, setTransferred] = useState(0);
-//   const [post, setPost] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [transferred, setTransferred] = useState(0);
+  // const [post, setPost] = useState(null);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -47,8 +47,16 @@ const AddPostScreen = () => {
 
     if (!result.cancelled) {
       setImage(result.uri);
+      this.uploadImage(result.uri, "test-image")
+      .then(() => {
+        Alert.alert('Success');
+      })
+      .catch(console.error((error) => {
+        Alert.alert(error);
+      }));
     }
   };
+  
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       width: 1200,
@@ -74,7 +82,35 @@ const AddPostScreen = () => {
   };
 
   const submitPost = async () => {
-      console.log('Something went wrong with added post to firestore.');
+    const uploadUri = image;
+    let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
+    Alert.alert(
+      'Uploading'
+    );
+    setUploading(true);
+    try {
+      await storage().ref(filename).putFile(uploadUri);
+
+      setUploading(false);
+      Alert.alert(
+          'Image Uploaded'
+      );
+    } catch (e) {
+        console.log(e);
+        Alert.alert(
+          'Something'
+      );
+      // Alert.alert(e);
+    }
+    setImage(null);
+  }
+
+  uploadImage = async(uri, imageName) => {
+    const response = await fetch(uri);
+    const blob = await response.blob();
+
+    var ref = firebase.storage().ref().child("images/" + imageName);
+    return ref.put(blob);
   }
   
   return (
@@ -91,7 +127,7 @@ const AddPostScreen = () => {
         //   value={post}
         //   onChangeText={(content) => setPost(content)}
         />
-        <SubmitBtn>
+        <SubmitBtn onPress={submitPost}>
             <SubmitBtnText>Post</SubmitBtnText>
         </SubmitBtn>
         </InputWrapper>
