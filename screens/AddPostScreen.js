@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+import * as ImagePicker from 'expo-image-picker';
 // import ImagePicker from 'react-native-image-crop-picker';
 
 // import storage from '@react-native-firebase/storage';
@@ -28,11 +29,26 @@ import {
 const AddPostScreen = () => {
 //   const {user, logout} = useContext(AuthContext);
 
-//   const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
 //   const [uploading, setUploading] = useState(false);
 //   const [transferred, setTransferred] = useState(0);
 //   const [post, setPost] = useState(null);
 
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       width: 1200,
@@ -57,11 +73,16 @@ const AddPostScreen = () => {
     });
   };
 
+  const submitPost = async () => {
+      console.log('Something went wrong with added post to firestore.');
+  }
+  
   return (
     <View style={styles.container}>
         <Text>Add Post</Text>
         <InputWrapper>
-        {/* {image != null ? <AddImage source={{uri: image}} /> : null} */}
+        {image != null ? <AddImage source={{uri: image}} /> : null}
+        {/* {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />} */}
 
         <InputField
           placeholder="What's on your mind?"
@@ -70,6 +91,9 @@ const AddPostScreen = () => {
         //   value={post}
         //   onChangeText={(content) => setPost(content)}
         />
+        <SubmitBtn>
+            <SubmitBtnText>Post</SubmitBtnText>
+        </SubmitBtn>
         </InputWrapper>
         <ActionButton buttonColor="#2e64e5">
         <ActionButton.Item
@@ -84,6 +108,13 @@ const AddPostScreen = () => {
           title="Choose Photo"
           onPress={()=> console.log('action button')}>
           {/* onPress={choosePhotoFromLibrary}> */}
+          <Icon name="md-images-outline" style={styles.actionButtonIcon} />
+        </ActionButton.Item>
+        <ActionButton.Item
+          buttonColor="#3498db"
+          title="Select Photo"
+          // onPress={()=> console.log('action button')}>
+          onPress={pickImage}>
           <Icon name="md-images-outline" style={styles.actionButtonIcon} />
         </ActionButton.Item>
       </ActionButton>
