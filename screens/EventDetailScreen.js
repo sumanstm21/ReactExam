@@ -3,11 +3,15 @@ import {
     ScrollView,
     Button,
     View,
+    Text,
     Alert,
+    ImageBackground,
     ActivityIndicator,
     StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements/dist/icons/Icon';
 import { TextInput } from "react-native-gesture-handler"
 import firebase from '../Firebase/firebase2';
+// import from 'react-native-vector-icon';
 
 const EventDetailScreen = (props) => {
 
@@ -52,7 +56,7 @@ const EventDetailScreen = (props) => {
             { text: "No", onPress: () => console.log("canceled") },
           ],
           {
-            cancelable: true,
+            cancelable: true, 
           }
         );
     };
@@ -80,38 +84,20 @@ const EventDetailScreen = (props) => {
             </View>
         );
     }
+    const bgimage = { uri: "https://reactjs.org/logo-og.png" };
 
  return (
-    <View>
-        <ScrollView style={styles.container}>
+    <ScrollView style={styles.container}>
+      <ImageBackground source={bgimage} resizeMode="cover" style={styles.image}>
+      <Text style={styles.text}>{event.title}</Text>
+      <Text style={styles.textdate}>{event.date}</Text>
+      <Text style={styles.textdate}>{event.location}</Text>
+      </ImageBackground>
       <View>
-        <TextInput
-          placeholder="Name"
-          autoCompleteType="username"
-          style={styles.inputGroup}
-          value={event.title}
-          onChangeText={(value) => handleTextChange(value, "name")}
-        />
+        <Text style={styles.description}>{event.description}</Text>
       </View>
-      <View>
-        <TextInput
-          autoCompleteType="email"
-          placeholder="Email"
-          style={styles.inputGroup}
-          value={event.date}
-          onChangeText={(value) => handleTextChange(value, "email")}
-        />
-      </View>
-      <View>
-        <TextInput
-          placeholder="Phone"
-          autoCompleteType="tel"
-          style={styles.inputGroup}
-          value={event.location}
-          onChangeText={(value) => handleTextChange(value, "phone")}
-        />
-      </View>
-      <View style={styles.btn}>
+
+      {/* <View style={styles.btn}>
         <Button
           title="Delete"
           onPress={() => openConfirmationAlert()}
@@ -120,14 +106,44 @@ const EventDetailScreen = (props) => {
       </View>
       <View>
         <Button title="Update" onPress={() => updateEvent()} color="#19AC52" />
-      </View>
+      </View> */}
     </ScrollView>
-    </View>
  );
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  text: {
+    color: "white",
+    fontSize: 42,
+    lineHeight: 84,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000c0"
+  },
+  textdate: {
+    color: "white",
+    fontSize: 22,
+    lineHeight: 84,
+    fontWeight: "bold",
+    // textAlign: "center",
+    backgroundColor: "#000000c0"
+  },
+  description: {
+    margin: 10,
+    color: "black",
+    fontSize: 12,
+    lineHeight: 24,
+    fontWeight: "bold",
+    // textAlign: "center",
+    backgroundColor: "#FFFFFF"
+  }
 });
 
 export default EventDetailScreen;

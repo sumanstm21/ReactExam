@@ -10,6 +10,10 @@ import {
     Alert,
   } from "react-native";
 
+  import {
+    InputField
+  } from '../styles/AddPost';
+
 const EventCreateScreen = (props) => {
 
     const initalState = {
@@ -75,8 +79,9 @@ const EventCreateScreen = (props) => {
       </View>
 
       <View style={styles.inputGroup}>
-        <TextInput
+        <InputField
           placeholder="Description"
+          multiline
           onChangeText={(value) => handleChangeText(value, "description")}
           value={state.description}
         />
