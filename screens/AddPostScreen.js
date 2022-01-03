@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import ActionButton from 'react-native-action-button';
+import { auth } from '../Firebase/firebase';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
 // import ImagePicker from 'react-native-image-crop-picker';
@@ -34,7 +35,7 @@ const AddPostScreen = () => {
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
-  // const [post, setPost] = useState(null);
+  const [post, setPost] = useState(null);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -84,15 +85,71 @@ const AddPostScreen = () => {
   };
 
   const submitPost = async () => {
+
+    firebase.db
+    .collection('posts')
+    .add({
+      userId: auth.currentUser.uid,
+      title: 'Title',
+      post: post,
+      postImg: 'Image',
+      postTime: firestore.Timestamp.fromDate(new Date()),
+      location: 'location',
+      likes: null,
+      comments: null,
+    })
+    .then(() => {
+      console.log('Post Added');
+    })
+    .catch((error) => {
+      console.log('Firebase error');
+    });
+    // Alert.alert(
+    //   'Post Saved Uploaded'
+    // );
+    // const imageUrl = await uploadImages();
+    // console.log('Image Url: ', imageUrl);
+    // console.log('Post: ', post);
+
+    // firestore()
+    // .collection('posts')
+    // .add({
+    //   userId: user.uid,
+    //   post: post,
+    //   postImg: imageUrl,
+    //   postTime: firestore.Timestamp.fromDate(new Date()),
+    //   likes: null,
+    //   comments: null,
+    // })
+    // .then(() => {
+    //   console.log('Post Added!');
+    //   Alert.alert(
+    //     'Post published!',
+    //     'Your post has been published Successfully!',
+    //   );
+    //   setPost(null);
+    // })
+    // .catch((error) => {
+    //   console.log('Something went wrong with added post to firestore.', error);
+    // });
+  }
+
+  const uploadImages = async () => {
     const uploadUri = image;
     let filename = uploadUri.substring(uploadUri.lastIndexOf('/') + 1);
-    Alert.alert(
-      'Uploading'
-    );
+
+    // Add timestamp to File Name
+    const extension = filename.split('.').pop(); 
+    const name = filename.split('.').slice(0, -1).join('.');
+    filename = name + Date.now() + '.' + extension;
+
+    const storageRef = storage().ref(`photos/${filename}`);
+
     setUploading(true);
     try {
       await storage().ref(filename).putFile(uploadUri);
       setUploading(false);
+      const url = await storageRef.getDownloadURL();
       Alert.alert(
           'Image Uploaded'
       );
@@ -102,6 +159,7 @@ const AddPostScreen = () => {
           'Something went wrong'
       );
       // Alert.alert(e);
+      return url;
     }
     setImage(null);
   }
@@ -125,8 +183,8 @@ const AddPostScreen = () => {
           placeholder="What's on your mind?"
           multiline
           numberOfLines={4}
-        //   value={post}
-        //   onChangeText={(content) => setPost(content)}
+          value={post}
+          onChangeText={(content) => setPost(content)}
         />
         <SubmitBtn onPress={submitPost}>
             <SubmitBtnText>Post</SubmitBtnText>

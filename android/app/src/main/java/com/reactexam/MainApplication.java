@@ -22,6 +22,7 @@ import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHostWrapper(
