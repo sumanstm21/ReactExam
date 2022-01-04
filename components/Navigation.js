@@ -17,6 +17,7 @@ import DiscoverCreateScreen from '../screens/DiscoverCreateScreen';
 import EventScreen from '../screens/EventScreen';
 import EventCreateScreen from '../screens/EventCreateScreen';
 import EventDetailScreen from '../screens/EventDetailScreen';
+import FlexBoxScreen from '../screens/FlexBoxScreen';
 
 const Navigation = props => {
     
@@ -53,6 +54,7 @@ const Navigation = props => {
                     <Stack.Screen name="DiscoverCreateScreen" component={ DiscoverCreateScreen } options={{title: 'Discovery'}} />
                     <Stack.Screen name="EventCreateScreen" component={ EventCreateScreen } />
                     <Stack.Screen name="EventScreen" component={ EventScreen } />
+                    <Stack.Screen name="FlexBoxScreen" component={ FlexBoxScreen } />
                     <Stack.Screen name="EventDetailScreen" component={ EventDetailScreen } />
                 </Stack.Navigator>
             )}

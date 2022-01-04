@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { State } from 'react-native-gesture-handler';
+import defaultStyles from '../GeneralStyles';
 import { useSelector, useDispatch } from 'react-redux';
 import { addition, subtraction } from '../store/actions/CounterActions';
 
-const ChatScreen = (props) => {
+const ChatScreen = ({navigation}) => {
 
 // const [counter, setCounter] = useState(0);
 
@@ -15,6 +16,10 @@ const ChatScreen = (props) => {
 // const subtractionHandler = () => {
 //     setCounter(counter - 1);
 // }
+
+function navigate(){
+    navigation.navigate('FlexBoxScreen');
+}
 
 // Applying Redux
 const data = useSelector(State => State.counter);
@@ -32,6 +37,10 @@ const dispatch = useDispatch();
         <Button title='Add' onPress={() => dispatch(addition())} />
         <Text>{data}</Text>
         <Button title='subtract' onPress={() => dispatch(subtraction())} />
+        <Text
+                onPress={navigate}
+                style={defaultStyles.LinkText}
+                >Go to Flex Box</Text>
     </View>
  );
 }
