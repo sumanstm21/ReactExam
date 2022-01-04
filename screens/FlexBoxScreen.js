@@ -1,11 +1,13 @@
+import { TabRouter } from '@react-navigation/core';
 import React from 'react';
 // import { View } from 'react-native-web';
 import { View, Text} from 'react-native';
+import Navigation from '../components/Navigation';
 
 
-const FlexBoxScreen = props => {
+const FlexBoxScreen = ({navigation, route}) => {
 
-
+    const { ItemName } = route.params;
     return(
         <View style={style.parentView}>
             <View style={style.yellowView}>
@@ -20,7 +22,7 @@ const FlexBoxScreen = props => {
             </View>
             <View style={style.greenView}>
                 <Text>
-                    Green
+                    {ItemName}
                 </Text>
             </View>
         </View>

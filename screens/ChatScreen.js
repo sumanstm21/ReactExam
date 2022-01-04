@@ -7,6 +7,7 @@ import { addition, subtraction } from '../store/actions/CounterActions';
 
 const ChatScreen = ({navigation}) => {
 
+    const passingData = 'Data from Chat Screen';
 // const [counter, setCounter] = useState(0);
 
 // const additionHandler = () => {
@@ -18,7 +19,9 @@ const ChatScreen = ({navigation}) => {
 // }
 
 function navigate(){
-    navigation.navigate('FlexBoxScreen');
+    navigation.navigate('FlexBoxScreen', {
+        ItemName: 'Data from previous Screen'
+    });
 }
 
 // Applying Redux
