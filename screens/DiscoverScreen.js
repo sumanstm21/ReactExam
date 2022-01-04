@@ -5,8 +5,10 @@ import {
     View,
     Alert,
     ActivityIndicator,
-    StyleSheet } from 'react-native';
+    StyleSheet, 
+    Text} from 'react-native';
 import { TextInput } from "react-native-gesture-handler"
+import { auth } from '../Firebase/firebase';
 import firebase from '../Firebase/firebase2';
 
 const DiscoverScreen = (props) => {
@@ -109,6 +111,15 @@ const DiscoverScreen = (props) => {
           onChangeText={(value) => handleTextChange(value, "phone")}
         />
       </View>
+      {(() => {
+              if (auth.currentUser.uid == user.userId){
+                  return (
+                      <Text>data</Text>
+                  )
+              }
+              return null;
+            })()}
+      {/* { auth.currentUser.uid == user.userId } */}
       <View style={styles.btn}>
         <Button
           title="Delete"

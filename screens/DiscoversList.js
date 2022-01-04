@@ -43,7 +43,7 @@ const DiscoversList = (props) => {
             <Avatar
               source={{
                 uri:
-                  "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
+                  "https://reactnative.dev/img/tiny_logo.png",
               }}
               rounded
             />

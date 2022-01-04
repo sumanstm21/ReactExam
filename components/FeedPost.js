@@ -33,7 +33,7 @@ const FeedPost = ({item}) => {
                 </UserInfoText>
             </UserInfo>
             <PostText>{item.post}</PostText>
-            <PostImg source={item.PostImg}/>
+            <PostImg source={item.PostImg} styles={{ resizeMode: 'cover', width: '100%', height: '100%' }}/>
             <InteractionWrapper>
                 <Interaction active={item.liked}>
                     <Ionicons name={likeIcon} size={25} color={likeIconColor} />

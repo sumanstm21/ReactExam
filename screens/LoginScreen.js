@@ -40,9 +40,7 @@ const LoginScreen = ({navigation}) => {
 
     return (
         <View style={styles.mainView}>
-            <Image source = {require('../img/MaskGroup1.svg')}
-                style = {{ width: 100, height: 100 }}
-                />
+            <Logo />
             <Text style={defaultStyles.pageTitle}>Log In</Text>
             <Text style={defaultStyles.formText}>Email</Text>
             <TextInput 

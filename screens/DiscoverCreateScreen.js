@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import firebase from '../Firebase/firebase2';
+import { auth } from '../Firebase/firebase';
 import {
     Button,
     View,
@@ -31,6 +32,7 @@ const DiscoverCreateScreen = (props) => {
     
           try {
             await firebase.db.collection("users").add({
+              userId: auth.currentUser.uid,
               name: state.name,
               email: state.email,
               phone: state.phone,
