@@ -28,7 +28,7 @@ const Navigation = props => {
     auth.onAuthStateChanged(user => {
         if (user) {
             console.log('You are on Navigation page.');
-            const loggedInUser = true;
+            const loggedInUser = auth.currentUser?.uid;
         }
     })
     // const loggedInUser = false;

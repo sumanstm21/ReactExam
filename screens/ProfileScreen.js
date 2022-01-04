@@ -24,7 +24,7 @@ const ProfileScreen = ({navigation}) => {
     return (
     <View style={styles.mainView}>
         <Text>Email: {auth.currentUser?.email}</Text>
-        <Text>Email: {auth.currentUser?.uid}</Text>
+        <Text>Your Id: {auth.currentUser?.uid}</Text>
         <TouchableOpacity onPress={handleSignOut} style={styles.Button}>
                 <Text style={styles.ButtonText}>Sign Out</Text>
         </TouchableOpacity>
