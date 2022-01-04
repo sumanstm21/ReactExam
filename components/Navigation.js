@@ -22,13 +22,14 @@ const Navigation = props => {
     
     const Stack = createNativeStackNavigator();
     const Tab = createBottomTabNavigator();
-    const loggedInUser = false;
+    // const loggedInUser = false;
+    const loggedInUser = `${ auth.currentUser?.uid ? true : false}`;
     
     // const loggedInUser = useSelector(state => state.user.loggedInUser);
     auth.onAuthStateChanged(user => {
         if (user) {
             console.log('You are on Navigation page.');
-            const loggedInUser = auth.currentUser?.uid;
+            // const loggedInUser = true;
         }
     })
     // const loggedInUser = false;
@@ -49,7 +50,7 @@ const Navigation = props => {
                     <Stack.Screen name="AuthHome" component={ AuthHome } />
                     <Stack.Screen name="DiscoversList" component={ DiscoversList }  options={{title: 'Discovery'}} />
                     <Stack.Screen name="DiscoverScreen" component={ DiscoverScreen }  options={{title: 'Discover List'}}/>
-                    <Stack.Screen name="DiscoverCreateScreen" component={ DiscoverCreateScreen } />
+                    <Stack.Screen name="DiscoverCreateScreen" component={ DiscoverCreateScreen } options={{title: 'Discovery'}} />
                     <Stack.Screen name="EventCreateScreen" component={ EventCreateScreen } />
                     <Stack.Screen name="EventScreen" component={ EventScreen } />
                     <Stack.Screen name="EventDetailScreen" component={ EventDetailScreen } />
