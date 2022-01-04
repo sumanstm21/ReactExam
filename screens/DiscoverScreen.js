@@ -64,6 +64,7 @@ const DiscoverScreen = (props) => {
           name: user.name,
           email: user.email,
           phone: user.phone,
+          userId: user.userId,
         });
         setUser(initialState);
         props.navigation.navigate("DiscoversList");
@@ -111,24 +112,31 @@ const DiscoverScreen = (props) => {
           onChangeText={(value) => handleTextChange(value, "phone")}
         />
       </View>
-      {(() => {
-              if (auth.currentUser.uid == user.userId){
-                  return (
-                      <Text>data</Text>
-                  )
-              }
-              return null;
-            })()}
+      <View style={{width:0,height:0}}>
+        <TextInput
+            placeholder="userId"
+            autoCompleteType="tel"
+            style={styles.inputGroup}
+            value={user.userId}
+            onChangeText={(value) => handleTextChange(value, "userId")}
+          />
+      </View>
       {/* { auth.currentUser.uid == user.userId } */}
       <View style={styles.btn}>
         <Button
           title="Delete"
           onPress={() => openConfirmationAlert()}
           color="#E37399"
+          disabled = { auth.currentUser.uid == user.userId ? false : true }
         />
       </View>
       <View>
-        <Button title="Update" onPress={() => updateUser()} color="#19AC52" />
+        <Button 
+          title="Update" 
+          onPress={() => updateUser()} 
+          color="#19AC52"
+          disabled = { auth.currentUser.uid == user.userId ? false : true }
+          />
       </View>
     </ScrollView>
     </View>
